@@ -12,8 +12,13 @@ public class HomeController implements ErrorController {
         return "index";
     }
 
+    @RequestMapping("/error")
+    public String handleError() {
+        return "index";
+    }
+
     @Override
     public String getErrorPath() {
-        return "/";
+        return "/error";
     }
 }

@@ -6,6 +6,6 @@
 
 ## 微信公众号
 
-![qrcode](src/main/resources/static/img/qrcode.jpg)
+![qrcode](https://github.com/mrshengzyzy/alioth/tree/master/src/main/resources/static/img/qrcode.jpg)
 
 
