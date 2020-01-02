@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::header"/>
+<body>
+<div th:replace="fragments::navbar"></div>
+<div class="container" style="margin-bottom: 100px;">
+    <div class="row">
+        <div th:each="p : ${poison}">
+            <span th:text="${p}"></span><br/>
+        </div>
+    </div>
+</div>
+<footer th:replace="fragments::footer"></footer>
+</body>
+</html>

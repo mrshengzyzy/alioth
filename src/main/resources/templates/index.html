@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::header"></head>
+<body>
+<div th:replace="fragments::navbar"></div>
+<div class="container">
+
+    <div class="row" id="poison-container">
+        <span id="poison"></span>
+        <div id="poison-btn">
+            <a class="btn-lg btn-success" id="btn-poison-one">再干一碗</a>
+            <a class="btn-lg btn-success" href="/poison-all" target="_blank">不够毒，全部干掉</a>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="fr">
+                <div id="code-img">
+                    <img src="img/qrcode.jpg" alt="">
+                    <p>欢迎关注 LostSpace</p>
+                    <p>一个绝不主动推送的公众号</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8 pt15">
+            <p> 试试向我发送指令吧，格式：<em>&lt;指令&gt;@&lt;内容&gt;</em></p>
+            <p> 几个有意思的指令：</p>
+            <ul class="index-content">
+                <li>发送 <em>图片</em> 或 <em>图片@100 200 </em> 随机获取一张特定大小的图片</li>
+                <li>发送 <em>空间站</em> 查看空间站当前位置</li>
+                <li>发送 <em>投食</em> 将获得一份鱼食，发送<em> 投食@xxx </em> 投放获得的鱼食。
+                    <a href="/fish" target="_blank">统计页面</a>
+                </li>
+                <li>发送 <em>指令</em> 查看所有指令</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<footer th:replace="fragments::footer"></footer>
+</body>
+<script>
+
+    $(document).ready(function () {
+
+        $("#btn-poison-one").bind("click", function () {
+            $.get("/poison", function (data) {
+                $("#poison").text(data);
+            });
+        });
+
+        $.get("/poison", function (data) {
+            $("#poison").text(data);
+        });
+    });
+
+</script>
+</html>

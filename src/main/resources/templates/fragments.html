@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="header">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>自言姿语</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet"/>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+
+<body>
+
+<div th:fragment="navbar" class="navbar" style="text-align: center;">
+
+</div>
+
+<footer th:fragment="footer" class="footer navbar-fixed-bottom text-center mb10">
+    <div class="container">
+        <p>© 2019. MrSheng. | <a href="https://beian.miit.gov.cn/" target="_blank">鲁ICP备20000111号</a> | 本站采用
+            <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank" style="color:#0477AB">MIT</a> 协议
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>

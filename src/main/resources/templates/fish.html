@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::header"/>
+<body>
+<div th:replace="fragments::navbar"></div>
+<div class="container">
+    <div class="row">
+
+        <p>共发放鱼食 <em th:text="${fish.totalCount}">1</em>&nbsp;
+            未投喂 <em th:text="${fish.unusedCount}">1</em>&nbsp;
+            已投喂 <em th:text="${fish.usedCount}">1</em>&nbsp;
+            排队中 <em th:text="${fish.queueCount}">1</em>
+        </p>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>鱼食编号</th>
+                <th>生成时间</th>
+                <th>投喂时间</th>
+                <th>状态</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="food : ${fish.beanList}">
+                <td th:text="${food.index}">0</td>
+                <td th:text="${food.food}">0</td>
+                <td th:text="${food.createDateTime}">0</td>
+                <td th:text="${food.useDateTime}">0</td>
+                <td th:text="${food.statusDesc}" th:if="${food.status} eq '2'" style="color:red">0</td>
+                <td th:text="${food.statusDesc}" th:if="${food.status} ne '2'">0</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<footer th:replace="fragments::footer"></footer>
+</body>
+</html>

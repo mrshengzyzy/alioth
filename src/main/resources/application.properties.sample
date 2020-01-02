@@ -1,0 +1,28 @@
+# 实例配置文件,请修改为你的配置
+# wechat
+wechat.app.id=
+wechat.app.secret=
+wechat.token=
+wechat.key=
+
+# thymeleaf
+spring.thymeleaf.prefix=classpath:/templates/
+spring.thymeleaf.suffix=.html
+spring.thymeleaf.mode=HTML
+spring.thymeleaf.encoding=UTF-8
+spring.thymeleaf.cache=false
+
+# log
+debug=false
+logging.file=/root/alioth.log
+logging.level.root=INFO
+
+# fish
+fish.salt=
+fish.db=/root/fish.db
+
+# frp
+frp.web.port=
+
+# alioth
+alioth.server.ip=
