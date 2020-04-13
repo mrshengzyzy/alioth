@@ -11,7 +11,7 @@ WORKDIR /alioth
 COPY application.properties ./src/main/resources
 RUN mvn clean package
 
-FROM openjdk:8-jre
+FROM openjdk:8-jre-alpine
 
 RUN mkdir -p /root/logs; \
     touch /root/fish.db
