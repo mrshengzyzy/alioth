@@ -1,6 +1,10 @@
 package alioth.mrsheng.space.core.utils;
 
 import alioth.mrsheng.space.Environment;
+import cn.hutool.core.codec.Base64;
+import cn.hutool.crypto.Mode;
+import cn.hutool.crypto.Padding;
+import cn.hutool.crypto.symmetric.AES;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -10,6 +14,12 @@ import java.util.Date;
 import java.util.UUID;
 
 public class CommonUtils {
+
+    /**
+     * 对方解密的时候需要使用相同的模式和补码方式
+     * 密钥支持三种密钥长度：128、192、256位
+     */
+    private static AES aes = new AES(Mode.CBC, Padding.PKCS5Padding, Environment.FISH_SALT.getBytes());
 
     /**
      * 重写的toString方法
@@ -53,5 +63,19 @@ public class CommonUtils {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         sdf.setTimeZone(Environment.ZONE);
         return sdf.format(new Date(timestamp));
+    }
+
+    /**
+     * AES加密
+     */
+    public static String aesEncrypt(String data) {
+        return Base64.encodeUrlSafe(aes.encrypt(data));
+    }
+
+    /**
+     * AES解密
+     */
+    public static String aesDecrypt(String data) {
+        return aes.decryptStr(Base64.decode(data));
     }
 }

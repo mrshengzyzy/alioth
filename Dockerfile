@@ -8,6 +8,8 @@ RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list; \
     rm -rf /var/lib/apt/lists/*
 RUN git clone https://github.com/mrshengzyzy/alioth.git
 WORKDIR /alioth
+
+# 自定义配置文件
 COPY application.properties ./src/main/resources
 RUN mvn clean package
 

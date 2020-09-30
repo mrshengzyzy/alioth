@@ -10,4 +10,8 @@ public class HitokotoFunny {
     public static String get() {
         return HttpUtil.get("https://international.v1.hitokoto.cn/?encode=text");
     }
+
+    public static void main(String[] args) {
+        System.out.println(get());
+    }
 }

@@ -33,10 +33,6 @@ public class CubeDispatcher {
 
         content = StringUtils.trim(content);
 
-        if (match(content, ShadowSocksCmd.CMD)) {
-            return ShadowSocksCmd.execute(toUser, fromUser, mediaService);
-        }
-
         if (match(content, PictureCmd.CMD)) {
             return PictureCmd.execute(toUser, fromUser, content, mediaService);
         }

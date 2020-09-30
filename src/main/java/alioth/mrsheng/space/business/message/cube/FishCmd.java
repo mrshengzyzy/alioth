@@ -1,7 +1,5 @@
 package alioth.mrsheng.space.business.message.cube;
 
-import alioth.mrsheng.space.business.fish.FishDBHelper;
-import alioth.mrsheng.space.business.fish.FishFood;
 import alioth.mrsheng.space.core.utils.CommonUtils;
 import alioth.mrsheng.space.core.utils.MessageFactory;
 import alioth.mrsheng.space.domain.message.Message;
@@ -27,28 +25,28 @@ class FishCmd {
      */
     static Message execute(String toUser, String fromUser, String content) {
 
-        // 获取指令中的 鱼食编码
-        String passFood = content.contains(CubeDispatcher.CMD) ? content.split(CubeDispatcher.CMD)[1].trim() : "";
+//        // 获取指令中的 鱼食编码
+//        String passFood = content.contains(CubeDispatcher.CMD) ? content.split(CubeDispatcher.CMD)[1].trim() : "";
+//
+//        // 根据指令编码确定操作
+//        String message = StringUtils.isBlank(passFood) ? newFishFood() : feedFishFood(passFood);
 
-        // 根据指令编码确定操作
-        String message = StringUtils.isBlank(passFood) ? newFishFood() : feedFishFood(passFood);
-
-        return MessageFactory.buildTextMessage(toUser, fromUser, message);
+        return MessageFactory.buildTextMessage(toUser, fromUser, "");
     }
 
-    static String newFishFood() {
-        String food = CommonUtils.uuid(10);
-        FishDBHelper.write(new FishFood(food));
-        LOGGER.info("create new fish food {}", food);
-        return food;
-    }
-
-    static String feedFishFood(String food) {
-        FishFood fishFood = FishDBHelper.read(food);
-        fishFood.setUseTimestamp(String.valueOf(System.currentTimeMillis()));
-        fishFood.setStatus(FishFood.QUEUE);
-        FishDBHelper.update(fishFood);
-        LOGGER.info("fish food {} was feed", food);
-        return food + " 已加入投放队列\n<a href=\"106.12.211.195/fish\">点击查看</a>";
-    }
+//    static String newFishFood() {
+//        String food = CommonUtils.uuid(10);
+//        FishDBHelper.write(new FishFood(food));
+//        LOGGER.info("create new fish food {}", food);
+//        return food;
+//    }
+//
+//    static String feedFishFood(String food) {
+//        FishFood fishFood = FishDBHelper.read(food);
+//        fishFood.setUseTimestamp(String.valueOf(System.currentTimeMillis()));
+//        fishFood.setStatus(FishFood.QUEUE);
+//        FishDBHelper.update(fishFood);
+//        LOGGER.info("fish food {} was feed", food);
+//        return food + " 已加入投放队列\n<a href=\"106.12.211.195/fish\">点击查看</a>";
+//    }
 }

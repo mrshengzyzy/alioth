@@ -1,27 +1,20 @@
 package alioth.mrsheng.space.service.impl;
 
-import alioth.mrsheng.space.Environment;
 import alioth.mrsheng.space.core.utils.CommonUtils;
 import alioth.mrsheng.space.core.utils.JacksonUtils;
-import alioth.mrsheng.space.core.utils.SimpleRestClient;
-import alioth.mrsheng.space.domain.AccessTokenRequest;
 import alioth.mrsheng.space.domain.AccessTokenResponse;
+import alioth.mrsheng.space.service.IAccessTokenService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import alioth.mrsheng.space.service.IAccessTokenService;
 
-import javax.annotation.Resource;
 import java.io.IOException;
 
 @Service
 public class AccessTokenServiceImpl implements IAccessTokenService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AccessTokenServiceImpl.class);
-
-    @Resource
-    private SimpleRestClient simpleRestClient;
 
     /**
      * token
@@ -65,7 +58,8 @@ public class AccessTokenServiceImpl implements IAccessTokenService {
      */
     private void refreshToken(Long now) {
         try {
-            String tokenResponse = simpleRestClient.get(Environment.TOKEN_URL, new AccessTokenRequest());
+//            String tokenResponse = HttpUtil.get(Environment.TOKEN_URL, new AccessTokenRequest());
+            String tokenResponse = "abc";
             LOGGER.info("refreshToken response{}", tokenResponse);
             if (StringUtils.isBlank(tokenResponse)) {
                 LOGGER.error("refreshToken response is empty");

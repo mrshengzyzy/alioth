@@ -36,7 +36,6 @@ public class Environment {
 
     // fish模块加密盐值
     public static String FISH_SALT;
-    public static String FISH_DB;
 
     static {
         try {
@@ -46,7 +45,6 @@ public class Environment {
             TOKEN = properties.getProperty("wechat.token");
             KEY = properties.getProperty("wechat.key");
             FISH_SALT = properties.getProperty("fish.salt");
-            FISH_DB = properties.getProperty("fish.db");
             SERVER_IP = properties.getProperty("alioth.server.ip");
             FRP_WEB_PORT = properties.getProperty("frp.web.port");
         } catch (IOException e) {
@@ -58,7 +56,6 @@ public class Environment {
      * 公众号域名配置
      * 最新来源请参考技术文档页面说明
      */
-    // 使用该域名将访问官方指定就近的接入点
     private static final String HOST = "https://api.weixin.qq.com";
 
 //    // 上海接入点
