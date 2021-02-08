@@ -4,8 +4,7 @@ import alioth.mrsheng.space.Environment;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * 获取access_token请求对象
- * 请求入参都是固定值
+ * 获取 access_token 请求对象
  */
 public class AccessTokenRequest {
 
@@ -13,10 +12,10 @@ public class AccessTokenRequest {
     private String grantType = "client_credential";
 
     @JsonProperty("appid")
-    private String appId = Environment.APP_ID;
+    private String appId = Environment.WECHAT_APP_ID;
 
     @JsonProperty("secret")
-    private String secret = Environment.APP_SECRET;
+    private String secret = Environment.WECHAT_APP_SECRET;
 
     public String getGrantType() {
         return grantType;

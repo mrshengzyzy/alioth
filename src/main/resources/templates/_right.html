@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="zh">
+
+
+<div th:fragment="wechat" class="card mb-2 boder-white bg-light text-secondary">
+    <div class="card-body shadow">
+        <div class="card-title text-center">
+            ------
+        </div>
+        <hr>
+        <div class="card-title text-center">
+            <img src="/img/qrcode2.jpg"/>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="label" class="card mb-2 border-white bg-light text-secondary">
+    <div class="card-body shadow">
+        <div class="card-title text-center">
+            标签
+        </div>
+        <hr>
+        <!-- 在这里生成标签 -->
+    </div>
+</div>
+
+
+<div th:fragment="friend" class="card mb-2 border-white bg-light text-secondary">
+    <div class="card-body shadow">
+        <div class="card-title text-center">友情链接</div>
+        <hr>
+        <small>
+            <ul class="list-unstyled">
+                <li class="mb-2">
+                    <a href="#">第一个友链</a>
+                </li>
+                <li class="mb-2">
+                    <a href="#">第二个友链</a>
+                </li>
+                <li class="mb-2">
+                    <a href="#">第三个友链</a>
+                </li>
+            </ul>
+        </small>
+    </div>
+</div>
+
+</html>

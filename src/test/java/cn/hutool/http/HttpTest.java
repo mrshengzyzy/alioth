@@ -5,8 +5,8 @@ import org.junit.Test;
 public class HttpTest {
 
     @Test
-    public void httpUtil() {
-        String body = HttpUtil.get("http://c.ishadowx.com/");
+    public void refreshToken() {
+        String body = HttpUtil.get("https://www.ithome.com/");
         System.out.println(body);
     }
 }

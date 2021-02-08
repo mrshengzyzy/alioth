@@ -1,0 +1,32 @@
+debug: false
+logging:
+  file:
+    name:
+  level:
+    root: INFO
+spring:
+  # html 模板引擎
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+    mode: HTML5
+    prefix: classpath:/templates/
+    suffix: .html
+# 微信配置
+wechat:
+  api: https://api.weixin.qq.com
+  token:
+  key:
+  accessTokenUrl: ${wechat.api}/cgi-bin/token
+  mediaUploadUrl: ${wechat.api}/cgi-bin/media/upload
+  appId:
+  appSecret:
+# 应用配置
+app:
+  fish:
+    salt:
+  frp:
+    port:
+    server:
+  sqlite:
+    url:

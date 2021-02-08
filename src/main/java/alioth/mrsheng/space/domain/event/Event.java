@@ -5,9 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlCData;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
-/**
- * 点击事件基类
- */
 @JacksonXmlRootElement(localName = "xml")
 public class Event {
 
@@ -41,8 +38,7 @@ public class Event {
     private String event;
 
     /**
-     * 事件KEY值
-     * 不同事件的key值具有不同的含义
+     * 事件 key 值,不同事件的 key 值含义不同
      */
     @JacksonXmlCData
     @JsonProperty("EventKey")

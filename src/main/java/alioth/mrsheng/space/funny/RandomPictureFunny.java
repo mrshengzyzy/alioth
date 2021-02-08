@@ -1,6 +1,6 @@
 package alioth.mrsheng.space.funny;
 
-import alioth.mrsheng.space.core.utils.CommonUtils;
+import cn.hutool.core.lang.UUID;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -43,7 +43,7 @@ public class RandomPictureFunny {
             InputStream in = entity.getContent();
 
             // 创建临时文件
-            File file = File.createTempFile(CommonUtils.uuid(5), ".jpg");
+            File file = File.createTempFile(UUID.fastUUID().toString(true), ".jpg");
 
             // 在虚拟机终止时,请求删除此抽象路径名表示的文件或目录
             file.deleteOnExit();

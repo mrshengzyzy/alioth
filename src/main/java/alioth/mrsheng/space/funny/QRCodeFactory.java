@@ -1,6 +1,6 @@
 package alioth.mrsheng.space.funny;
 
-import alioth.mrsheng.space.core.utils.CommonUtils;
+import cn.hutool.core.lang.UUID;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
@@ -55,7 +55,7 @@ public class QRCodeFactory {
             // 生成临时文件并写入img文件夹
             String directory = ResourceUtils.getURL("classpath:").getPath();
             String imgDirectory = directory + "static" + File.separator + "img";
-            File file = File.createTempFile(CommonUtils.uuid(5), ".png", new File(imgDirectory));
+            File file = File.createTempFile(UUID.fastUUID().toString(true), ".png", new File(imgDirectory));
             writeToFile(bitMatrix, FORMAT, file);
             return file;
         } catch (Exception e) {

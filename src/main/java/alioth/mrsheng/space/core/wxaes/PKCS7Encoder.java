@@ -1,11 +1,3 @@
-/**
- * 对公众平台发送给公众账号的消息加解密示例代码.
- *
- * @copyright Copyright (c) 1998-2014 Tencent Inc.
- */
-
-// ------------------------------------------------------------------------
-
 package alioth.mrsheng.space.core.wxaes;
 
 import java.nio.charset.Charset;
@@ -15,8 +7,9 @@ import java.util.Arrays;
  * 提供基于PKCS7算法的加解密接口.
  */
 class PKCS7Encoder {
-    static Charset CHARSET = Charset.forName("utf-8");
-    static int BLOCK_SIZE = 32;
+
+    private static Charset CHARSET = Charset.forName("utf-8");
+    private static int BLOCK_SIZE = 32;
 
     /**
      * 获得对明文进行补位填充的字节.
@@ -25,18 +18,17 @@ class PKCS7Encoder {
      * @return 补齐用的字节数组
      */
     static byte[] encode(int count) {
+
         // 计算需要填充的位数
         int amountToPad = BLOCK_SIZE - (count % BLOCK_SIZE);
-        if (amountToPad == 0) {
-            amountToPad = BLOCK_SIZE;
-        }
+
         // 获得补位所用的字符
         char padChr = chr(amountToPad);
-        String tmp = new String();
+        StringBuilder tmp = new StringBuilder();
         for (int index = 0; index < amountToPad; index++) {
-            tmp += padChr;
+            tmp.append(padChr);
         }
-        return tmp.getBytes(CHARSET);
+        return tmp.toString().getBytes(CHARSET);
     }
 
     /**
@@ -59,9 +51,8 @@ class PKCS7Encoder {
      * @param a 需要转化的数字
      * @return 转化得到的字符
      */
-    static char chr(int a) {
+    private static char chr(int a) {
         byte target = (byte) (a & 0xFF);
         return (char) target;
     }
-
 }

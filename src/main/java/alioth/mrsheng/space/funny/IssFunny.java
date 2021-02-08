@@ -1,7 +1,7 @@
 package alioth.mrsheng.space.funny;
 
-import alioth.mrsheng.space.core.utils.CommonUtils;
-import alioth.mrsheng.space.core.utils.JacksonUtils;
+import alioth.mrsheng.space.core.JacksonUtils;
+import cn.hutool.core.lang.UUID;
 import cn.hutool.http.HttpUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,7 +50,7 @@ public class IssFunny {
             // 临时文件
             String directory = ResourceUtils.getURL("classpath:").getPath();
             String imgDirectory = directory + "static" + File.separator + "img";
-            File file = File.createTempFile(CommonUtils.uuid(5), ".png", new File(imgDirectory));
+            File file = File.createTempFile(UUID.fastUUID().toString(true), ".png", new File(imgDirectory));
 
             // 图片地址
             URL url = new URL("http://www.heavens-above.com/orbitdisplay.aspx?width=400&height=400");

@@ -1,73 +1,81 @@
 package alioth.mrsheng.space;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.support.PropertiesLoaderUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
 
-import java.io.IOException;
-import java.util.Properties;
-import java.util.TimeZone;
-
-/**
- * 环境变量配置
- * 引用 application.properties 配置,这样就不用到处写 @Value() 了
- */
+@Component("AnyNameExceptEnvironment")
+@Order(Ordered.HIGHEST_PRECEDENCE)
 public class Environment {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Environment.class);
+    // 微信 API
+    public static String WECHAT_TOKEN_URL;
+    public static String WECHAT_MEDIA_UPLOAD_URL;
 
-    // 服务器IP地址
-    public static String SERVER_IP;
+    // 公众号配置
+    public static String WECHAT_APP_ID;
+    public static String WECHAT_APP_SECRET;
+    public static String WECHAT_TOKEN;
+    public static String WECHAT_KEY;
 
-    // frps 监听web服务地址
-    public static String FRP_WEB_PORT;
+    // fish 加密盐值
+    public static String APP_FISH_SALT;
 
-    // 北京时间
-    public static final TimeZone ZONE = TimeZone.getTimeZone("GMT+8:00");
+    // frp 服务配置
+    public static String APP_FRP_SERVER;
+    public static String APP_FRP_PORT;
 
-    // 开发者ID 和 开发者密码
-    public static String APP_ID;
-    public static String APP_SECRET;
+    // SQLite 配置
+    public static String APP_SQLITE_URL;
 
-    // 公众平台自定义的token 和 AES key
-    public static String TOKEN;
-    public static String KEY;
-
-    // fish模块加密盐值
-    public static String FISH_SALT;
-
-    static {
-        try {
-            Properties properties = PropertiesLoaderUtils.loadProperties(new ClassPathResource("application.properties"));
-            APP_ID = properties.getProperty("wechat.app.id");
-            APP_SECRET = properties.getProperty("wechat.app.secret");
-            TOKEN = properties.getProperty("wechat.token");
-            KEY = properties.getProperty("wechat.key");
-            FISH_SALT = properties.getProperty("fish.salt");
-            SERVER_IP = properties.getProperty("alioth.server.ip");
-            FRP_WEB_PORT = properties.getProperty("frp.web.port");
-        } catch (IOException e) {
-            LOGGER.error("load properties error:", e);
-        }
+    @Value("${wechat.accessTokenUrl}")
+    public void setWechatTokenUrl(String url) {
+        WECHAT_TOKEN_URL = url;
     }
 
-    /**
-     * 公众号域名配置
-     * 最新来源请参考技术文档页面说明
-     */
-    private static final String HOST = "https://api.weixin.qq.com";
+    @Value("${wechat.mediaUploadUrl}")
+    public void setWechatMediaUploadUrl(String url) {
+        WECHAT_APP_ID = url;
+    }
 
-//    // 上海接入点
-//    public static final String HOST = "https://sh.api.weixin.qq.com";
-//    // 深圳接入点
-//    public static final String HOST = "https://sz.api.weixin.qq.com";
-//    // 香港接入点
-//    public static final String HOST = "https://hk.api.weixin.qq.com";
+    @Value("${wechat.appId}")
+    public void setWechatAppId(String wechatAppId) {
+        WECHAT_MEDIA_UPLOAD_URL = wechatAppId;
+    }
 
-    // access_token请求URL
-    public static final String TOKEN_URL = HOST + "/cgi-bin/token";
+    @Value("${wechat.appSecret}")
+    public void setWechatAppSecret(String wechatAppSecret) {
+        WECHAT_APP_SECRET = wechatAppSecret;
+    }
 
-    // 素材操作URL
-    public static final String UPLOAD_MEDIA_URL = HOST + "/cgi-bin/media/upload";
+    @Value("${wechat.token}")
+    public void setWechatToken(String wechatToken) {
+        WECHAT_TOKEN = wechatToken;
+    }
+
+    @Value("${wechat.key}")
+    public void setWechatKey(String wechatKey) {
+        WECHAT_KEY = wechatKey;
+    }
+
+    @Value("${app.fish.salt}")
+    public void setAppFishSalt(String appFishSalt) {
+        APP_FISH_SALT = appFishSalt;
+    }
+
+    @Value("${app.frp.server}")
+    public void setAppFrpServer(String appFrpServer) {
+        APP_FRP_SERVER = appFrpServer;
+    }
+
+    @Value("${app.frp.port}")
+    public void setAppFrpPort(String appFrpPort) {
+        APP_FRP_PORT = appFrpPort;
+    }
+
+    @Value("${app.sqlite.url}")
+    public void setAppSqliteUrl(String appSqliteUrl) {
+        APP_SQLITE_URL = appSqliteUrl;
+    }
 }

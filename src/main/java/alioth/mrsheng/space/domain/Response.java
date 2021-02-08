@@ -1,6 +1,6 @@
 package alioth.mrsheng.space.domain;
 
-import alioth.mrsheng.space.core.exception.ErrorCodeMessage;
+import alioth.mrsheng.space.core.ErrorCodeMessage;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Response<T> {

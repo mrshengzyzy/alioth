@@ -5,6 +5,12 @@ package alioth.mrsheng.space.domain.event;
  */
 public final class EventType {
 
+    // 订阅公众号
+    public static final String SUBSCRIBE = "subscribe";
+
+    // 取消订阅公众号
+    public static final String UNSUBSCRIBE = "unsubscribe";
+
     // 点击菜单
     public static final String CLICK = "CLICK";
 
@@ -28,5 +34,4 @@ public final class EventType {
 
     // 地理位置选择器的事件
     public static final String LOCATION_SELECT = "location_select";
-
 }

@@ -1,61 +1,25 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments::header"></head>
-<body>
-<div th:replace="fragments::navbar"></div>
-<div class="container">
-
-    <div class="row" id="poison-container">
-        <span id="poison"></span>
-        <div id="poison-btn">
-            <a class="btn-lg btn-success" id="btn-poison-one">再干一碗</a>
-            <a class="btn-lg btn-success" href="/poison-all" target="_blank">不够毒，全部干掉</a>
-        </div>
-    </div>
-
-
-    <div class="row">
-
-        <div class="col-md-4">
-            <div class="fr">
-                <div id="code-img">
-                    <img src="img/qrcode.jpg" alt="">
-                    <p>欢迎关注 LostSpace</p>
-                    <p>一个绝不主动推送的公众号</p>
+<html lang="zh" class="h-100" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_head :: head"></head>
+<body class="d-flex flex-column h-100">
+<header th:replace="_header :: navbar"></header>
+<main class="flex-shrink-0 my-4">
+    <div class="container text-secondary">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="container p-3">
+                    <!-- 展示 page 页面的 fragment 片段-->
+                    <div th:replace="${page} :: ${fragment}"></div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-md-8 pt15">
-            <p> 试试向我发送指令吧，格式：<em>&lt;指令&gt;@&lt;内容&gt;</em></p>
-            <p> 几个有意思的指令：</p>
-            <ul class="index-content">
-                <li>发送 <em>图片</em> 或 <em>图片@100 200 </em> 随机获取一张特定大小的图片</li>
-                <li>发送 <em>空间站</em> 查看空间站当前位置</li>
-                <li>发送 <em>投食</em> 将获得一份鱼食，发送<em> 投食@xxx </em> 投放获得的鱼食。
-                    <a href="/fish" target="_blank">统计页面</a>
-                </li>
-                <li>发送 <em>指令</em> 查看所有指令</li>
-            </ul>
+            <div class="col-md-3">
+                <div th:replace="_right :: wechat"></div>
+                <div th:replace="_right :: label"></div>
+                <div th:replace="_right :: friend"></div>
+            </div>
         </div>
     </div>
-</div>
-<footer th:replace="fragments::footer"></footer>
+</main>
+<footer th:replace="_footer :: footer"></footer>
 </body>
-<script>
-
-    $(document).ready(function () {
-
-        $("#btn-poison-one").bind("click", function () {
-            $.get("/poison", function (data) {
-                $("#poison").text(data);
-            });
-        });
-
-        $.get("/poison", function (data) {
-            $("#poison").text(data);
-        });
-    });
-
-</script>
 </html>

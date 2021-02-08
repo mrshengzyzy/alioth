@@ -3,7 +3,7 @@ package alioth.mrsheng.space.domain;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * 获取access_token响应对象
+ * 获取 access_token 响应对象
  */
 public class AccessTokenResponse extends Response {
 

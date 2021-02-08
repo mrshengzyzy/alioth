@@ -1,23 +1,15 @@
 package alioth.mrsheng.space.core.wxaes;
 
 import alioth.mrsheng.space.Environment;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.FactoryBean;
 
-/**
- * WXBizMsgCrypt工厂
- * 用来注入到Spring中
- */
 public class WXBizMsgCryptFactory implements FactoryBean<WXBizMsgCrypt> {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(WXBizMsgCryptFactory.class);
 
     private static WXBizMsgCrypt wxBizMsgCrypt;
 
     private static synchronized void init() throws Exception {
         if (null == wxBizMsgCrypt) {
-            wxBizMsgCrypt = new WXBizMsgCrypt(Environment.TOKEN, Environment.KEY, Environment.APP_ID);
+            wxBizMsgCrypt = new WXBizMsgCrypt(Environment.WECHAT_TOKEN, Environment.WECHAT_KEY, Environment.WECHAT_APP_ID);
         }
     }
 

@@ -1,6 +1,7 @@
 package alioth.mrsheng.space;
 
-import alioth.mrsheng.space.core.utils.XmlMapperFactory;
+import alioth.mrsheng.space.core.XmlMapperFactory;
+import alioth.mrsheng.space.core.sqlite.DBHelper;
 import alioth.mrsheng.space.core.wxaes.WXBizMsgCrypt;
 import alioth.mrsheng.space.core.wxaes.WXBizMsgCryptFactory;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
@@ -22,6 +23,10 @@ public class StartApplication {
     }
 
     public static void main(String[] args) {
+
         SpringApplication.run(StartApplication.class, args);
+
+        // 初始化数据库
+        DBHelper.Init();
     }
 }
