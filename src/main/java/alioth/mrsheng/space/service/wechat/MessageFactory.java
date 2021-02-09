@@ -1,8 +1,8 @@
 package alioth.mrsheng.space.service.wechat;
 
-import alioth.mrsheng.space.domain.message.ImageMessage;
-import alioth.mrsheng.space.domain.message.MessageType;
-import alioth.mrsheng.space.domain.message.TextMessage;
+import alioth.mrsheng.space.domain.wechat.message.ImageMessage;
+import alioth.mrsheng.space.domain.wechat.message.MessageType;
+import alioth.mrsheng.space.domain.wechat.message.TextMessage;
 import cn.hutool.core.util.StrUtil;
 
 import java.util.Date;

@@ -15,19 +15,22 @@ public class InformationBlock extends HtmlBlock {
     public static final String TIME = "time";
     public static final String TITLE = "title";
     public static final String LABELS = "labels";
+    public static final String CATALOGUE = "catalogue";
 
     public static boolean isTrue(HtmlBlock block) {
         String comment = block.getLiteral();
         return StrUtil.startWith(comment, StartLabel) && StrUtil.endWith(comment, EndLabel);
     }
 
+    private String title;
+
     private String author;
 
     private String time;
 
-    private String title;
-
     private List<String> labels;
+
+    private String catalogue;
 
     private String html;
 
@@ -71,11 +74,20 @@ public class InformationBlock extends HtmlBlock {
         this.html = html;
     }
 
+    public String getCatalogue() {
+        return catalogue;
+    }
+
+    public void setCatalogue(String catalogue) {
+        this.catalogue = catalogue;
+    }
+
     @Override
     public String toString() {
         return "InformationBlock{" + "author='" + author + '\'' +
                 ", time='" + time + '\'' +
                 ", title='" + title + '\'' +
+                ", catalogue='" + catalogue + '\'' +
                 ", labels=" + labels +
                 ", html=<omit>}";
     }

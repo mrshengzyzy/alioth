@@ -1,7 +1,11 @@
 package alioth.mrsheng.space.service.blog;
 
+import alioth.mrsheng.space.core.CommonMarkUtils;
+import alioth.mrsheng.space.core.commonmark.information.InformationBlock;
+import alioth.mrsheng.space.domain.blog.Article;
 import cn.hutool.core.io.FileUtil;
-import cn.hutool.core.util.StrUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
@@ -15,44 +19,56 @@ import java.util.List;
 @Service
 public class BlogServiceImpl implements IBlogService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(BlogServiceImpl.class);
+
     @Override
-    public List<Article> articleList() {
+    public List<Article> articleList(String catalogue) throws IOException {
+
         List<Article> articleList = new ArrayList<>();
-        Article a = new Article("AAA", "2021-02-07 17:28:20", "This is *Sparta*");
-        Article a1 = new Article("BBB", "2021-02-07 17:28:20", "This is *Sparta*");
-        Article a2 = new Article("CCC", "2021-02-07 17:28:20", "This is *Sparta*");
-        Article a3 = new Article("DDD", "2021-02-07 17:28:20", "This is *Sparta*");
-        Article a4 = new Article("EEE", "2021-02-07 17:28:20", "This is *Sparta*");
-        articleList.add(a);
-        articleList.add(a1);
-        articleList.add(a2);
-        articleList.add(a3);
-        articleList.add(a4);
+
+        String locationPattern = "all".equals(catalogue) ? "blogs/**" : "blogs/" + catalogue + "/**";
+        ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        Resource[] resources = resolver.getResources(locationPattern);
+        for (Resource resource : resources) {
+            Article article = convertFromResource(resource);
+            if (article != null) {
+                articleList.add(article);
+            }
+        }
         return articleList;
     }
 
     @Override
-    public Article article(String title) {
-        return null;
+    public Article article(String catalogue, String title) throws IOException {
+        String locationPattern = "blogs/" + catalogue + "/" + title + ".md";
+        ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        Resource resource = resolver.getResource(locationPattern);
+        return convertFromResource(resource);
     }
 
-    private List<Article> _cache() {
-        try {
-            ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-            Resource[] resources = resolver.getResources("posts/**");
-            for (Resource resource : resources) {
-                File file = resource.getFile();
-                if (file.isFile()) {
-                    String path = file.getPath();
-                    List<String> parts = StrUtil.split(path, File.separatorChar);
-                    String dir = parts.get(parts.size() - 2);
-                    String content = FileUtil.readUtf8String(file);
-                    System.out.println(dir + ":" + content);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+    private Article convertFromResource(Resource resource) throws IOException {
+
+        // 获取待转换的文件
+        File file = resource.getFile();
+
+        // should neve happened
+        if (!file.isFile()) {
+            return null;
         }
-        return new ArrayList<>();
+
+        // 读取文件内容并转换为 html
+        String content = FileUtil.readUtf8String(file);
+        InformationBlock block = CommonMarkUtils.markdown2Html(content);
+
+        // 转换为 Article 对象
+        Article article = new Article();
+        article.setTitle(block.getTitle());
+        article.setAuthor(block.getAuthor());
+        article.setTime(block.getTime());
+        article.setLabels(block.getLabels());
+        article.setCatalogue(block.getCatalogue());
+        article.setHtml(block.getHtml());
+        article.setDescription("如何获取简介内容?");
+        return article;
     }
 }

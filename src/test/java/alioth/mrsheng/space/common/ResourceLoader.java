@@ -19,9 +19,9 @@ import java.util.List;
 public class ResourceLoader {
 
     @Test
-    public void testFile() throws IOException {
+    public void printAll() throws IOException {
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        Resource[] resources = resolver.getResources("posts/**");
+        Resource[] resources = resolver.getResources("blogs/**");
         for (Resource resource : resources) {
             File file = resource.getFile();
             if (file.isFile()) {
@@ -32,5 +32,16 @@ public class ResourceLoader {
                 System.out.println(dir + ":" + content);
             }
         }
+    }
+
+    @Test
+    public void printOne() throws IOException {
+        ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        Resource resource = resolver.getResource("blogs/compiler/compiler1.md");
+        File file = resource.getFile();
+        String path = file.getPath();
+        List<String> parts = StrUtil.split(path, File.separatorChar);
+        String dir = parts.get(parts.size() - 2);
+        System.out.println(dir);
     }
 }

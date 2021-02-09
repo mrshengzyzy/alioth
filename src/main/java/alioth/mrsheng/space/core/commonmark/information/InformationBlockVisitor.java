@@ -13,9 +13,11 @@ public class InformationBlockVisitor extends AbstractVisitor {
     @Override
     public void visit(HtmlBlock block) {
 
+        // 每次调用都创建新对象
+        informationBlock = new InformationBlock();
+
         // 解析信息节点
         if (InformationBlock.isTrue(block)) {
-            informationBlock = new InformationBlock();
 
             String content = block.getLiteral();
             String[] lines = content.split("\n");
@@ -38,6 +40,9 @@ public class InformationBlockVisitor extends AbstractVisitor {
                         continue;
                     case InformationBlock.TITLE:
                         informationBlock.setTitle(value);
+                        continue;
+                    case InformationBlock.CATALOGUE:
+                        informationBlock.setCatalogue(value);
                         continue;
                     case InformationBlock.LABELS:
                         informationBlock.setLabels(Arrays.asList(value.split(",")));

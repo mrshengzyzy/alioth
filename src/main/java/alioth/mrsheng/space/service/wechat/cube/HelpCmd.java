@@ -2,7 +2,7 @@ package alioth.mrsheng.space.service.wechat.cube;
 
 import alioth.mrsheng.space.Environment;
 import alioth.mrsheng.space.service.wechat.MessageFactory;
-import alioth.mrsheng.space.domain.message.Message;
+import alioth.mrsheng.space.domain.wechat.message.Message;
 
 class HelpCmd {
 

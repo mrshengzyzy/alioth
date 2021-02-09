@@ -8,8 +8,21 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="container p-3">
-                    <!-- 展示 page 页面的 fragment 片段-->
-                    <div th:replace="${page} :: ${fragment}"></div>
+                    <ul class="list-unstyled article-list">
+                        <li class="media mb-3" th:each="article : ${articleList}">
+                            <div class="media-body">
+                                <h1 class="mb-1">
+                                    <a class="text-dark"
+                                       th:href="@{'/blog/'+${article.getCatalogue()}+'/'+${article.getTitle()}}"
+                                       th:text="${article.getTitle()}">Title</a>
+                                </h1>
+                                <small>
+                                    <a class="text-secondary" href="#" th:text="${article.getTime()}"></a>
+                                </small>
+                                <p th:text="${article.getDescription()}"></p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="col-md-3">

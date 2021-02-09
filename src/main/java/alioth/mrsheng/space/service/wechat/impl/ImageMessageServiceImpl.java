@@ -1,9 +1,9 @@
 package alioth.mrsheng.space.service.wechat.impl;
 
 import alioth.mrsheng.space.core.JacksonUtils;
-import alioth.mrsheng.space.domain.message.ImageMessage;
-import alioth.mrsheng.space.domain.message.Message;
-import alioth.mrsheng.space.domain.message.MessageType;
+import alioth.mrsheng.space.domain.wechat.message.ImageMessage;
+import alioth.mrsheng.space.domain.wechat.message.Message;
+import alioth.mrsheng.space.domain.wechat.message.MessageType;
 import alioth.mrsheng.space.service.wechat.IMessageService;
 import alioth.mrsheng.space.service.wechat.MessageFactory;
 import org.slf4j.Logger;

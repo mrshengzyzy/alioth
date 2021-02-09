@@ -1,6 +1,6 @@
 package alioth.mrsheng.space.service.wechat;
 
-import alioth.mrsheng.space.domain.media.MediaType;
+import alioth.mrsheng.space.domain.wechat.media.MediaType;
 
 import java.io.File;
 

@@ -1,7 +1,7 @@
 package alioth.mrsheng.space.service.wechat.cube;
 
-import alioth.mrsheng.space.domain.media.MediaType;
-import alioth.mrsheng.space.domain.message.Message;
+import alioth.mrsheng.space.domain.wechat.media.MediaType;
+import alioth.mrsheng.space.domain.wechat.message.Message;
 import alioth.mrsheng.space.funny.RandomPictureFunny;
 import alioth.mrsheng.space.service.wechat.ISupportService;
 import alioth.mrsheng.space.service.wechat.MessageFactory;

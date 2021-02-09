@@ -1,9 +1,9 @@
 package alioth.mrsheng.space.service.wechat.impl;
 
 import alioth.mrsheng.space.core.JacksonUtils;
-import alioth.mrsheng.space.domain.event.EventType;
-import alioth.mrsheng.space.domain.event.SubscribeEvent;
-import alioth.mrsheng.space.domain.message.Message;
+import alioth.mrsheng.space.domain.wechat.event.EventType;
+import alioth.mrsheng.space.domain.wechat.event.SubscribeEvent;
+import alioth.mrsheng.space.domain.wechat.message.Message;
 import alioth.mrsheng.space.service.wechat.IEventService;
 import alioth.mrsheng.space.service.wechat.MessageFactory;
 import org.slf4j.Logger;

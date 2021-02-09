@@ -1,7 +1,7 @@
 package alioth.mrsheng.space.service.wechat;
 
 import alioth.mrsheng.space.core.ioc.MatchingBean;
-import alioth.mrsheng.space.domain.message.Message;
+import alioth.mrsheng.space.domain.wechat.message.Message;
 
 public interface IMessageService extends MatchingBean<String> {
 

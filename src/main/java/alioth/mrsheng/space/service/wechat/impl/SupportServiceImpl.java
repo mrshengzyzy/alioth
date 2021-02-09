@@ -2,8 +2,8 @@ package alioth.mrsheng.space.service.wechat.impl;
 
 import alioth.mrsheng.space.Environment;
 import alioth.mrsheng.space.core.JacksonUtils;
-import alioth.mrsheng.space.domain.AccessTokenResponse;
-import alioth.mrsheng.space.domain.media.MediaUploadResponse;
+import alioth.mrsheng.space.domain.wechat.AccessTokenResponse;
+import alioth.mrsheng.space.domain.wechat.media.MediaUploadResponse;
 import alioth.mrsheng.space.service.wechat.ISupportService;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpUtil;

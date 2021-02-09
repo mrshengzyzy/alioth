@@ -1,7 +1,7 @@
 package alioth.mrsheng.space.service.wechat.cube;
 
 import alioth.mrsheng.space.service.wechat.MessageFactory;
-import alioth.mrsheng.space.domain.message.Message;
+import alioth.mrsheng.space.domain.wechat.message.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

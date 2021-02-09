@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh" class="h-100" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_head :: head"></head>
+<body class="d-flex flex-column h-100">
+<header th:replace="_header :: navbar"></header>
+<main class="flex-shrink-0 my-4">
+    <div class="container text-secondary">
+        <div class="row">
+            <div class="col-md-9">
+                About Me
+            </div>
+            <div class="col-md-3">
+                <div th:replace="_right :: wechat"></div>
+                <div th:replace="_right :: label"></div>
+                <div th:replace="_right :: friend"></div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="_footer :: footer"></footer>
+</body>
+</html>

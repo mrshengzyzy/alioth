@@ -1,6 +1,6 @@
 package alioth.mrsheng.space.service.wechat.cube;
 
-import alioth.mrsheng.space.domain.message.Message;
+import alioth.mrsheng.space.domain.wechat.message.Message;
 import alioth.mrsheng.space.service.wechat.ISupportService;
 import cn.hutool.core.util.StrUtil;
 import org.springframework.stereotype.Service;
