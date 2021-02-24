@@ -19,7 +19,11 @@
             标签
         </div>
         <hr>
-        <!-- 在这里生成标签 -->
+        <table>
+            <tr th:each="map : ${labels}">
+                <td th:text="${map.key} + | --- | + ${map.value}"></td>
+            </tr>
+        </table>
     </div>
 </div>
 

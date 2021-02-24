@@ -12,8 +12,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-public abstract class AbstractBlogServiceImpl {
+public abstract class AbstractBlogSupport {
 
     public static final String ALL_CATALOGUE = "all";
 
@@ -41,7 +43,7 @@ public abstract class AbstractBlogServiceImpl {
         return resource.getFile();
     }
 
-    protected Article fileToArticle(File file) throws IOException {
+    protected Article fileToArticle(File file) {
 
         // 读取文件内容并转换为 html
         String content = FileUtil.readUtf8String(file);
@@ -59,7 +61,22 @@ public abstract class AbstractBlogServiceImpl {
         return article;
     }
 
-    protected String catalogueToLocationPattern(String catalogue){
+    protected String catalogueToLocationPattern(String catalogue) {
         return ALL_CATALOGUE.equals(catalogue) ? BLOG_DIR + "/**" : BLOG_DIR + "/" + catalogue + "/**";
+    }
+
+    protected Map<String, Integer> countArticleLabels(List<Article> articleList) {
+        Map<String, Integer> map = new ConcurrentHashMap<>();
+        for (Article article : articleList) {
+            for (String label : article.getLabels()) {
+                Integer count = map.get(label);
+                if (count == null) {
+                    count = 0;
+                }
+                count += 1;
+                map.put(label, count);
+            }
+        }
+        return map;
     }
 }

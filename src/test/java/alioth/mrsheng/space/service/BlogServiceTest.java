@@ -29,14 +29,7 @@ public class BlogServiceTest {
 
     @Test
     public void printArticle() throws Exception {
-        Article article = blogService.article("golang", "golang1");
+        Article article = blogService.articleDetail("golang");
         System.out.println(article);
     }
-
-    @Test
-    public void countLabels() throws Exception {
-        Map<String, Integer> map = blogService.countLabels("all");
-        map.forEach((k, v) -> System.out.println(k + ":" + v));
-    }
-
 }

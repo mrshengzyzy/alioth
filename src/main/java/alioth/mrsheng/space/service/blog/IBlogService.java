@@ -8,9 +8,7 @@ import java.util.Map;
 
 public interface IBlogService {
 
-    List<Article> articleList(String catalogue) throws IOException;
+    List<Article> articleList(String dir) throws IOException;
 
-    Article article(String catalogue, String title) throws IOException;
-
-    Map<String, Integer> countLabels(String catalogue) throws IOException;
+    Article articleDetail(String location) throws IOException;
 }
