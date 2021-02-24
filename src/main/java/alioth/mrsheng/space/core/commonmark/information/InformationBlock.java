@@ -12,10 +12,10 @@ public class InformationBlock extends HtmlBlock {
     private static final String EndLabel = "?>";
 
     public static final String AUTHOR = "author";
-    public static final String TIME = "time";
     public static final String TITLE = "title";
-    public static final String LABELS = "labels";
     public static final String CATALOGUE = "catalogue";
+    public static final String TIME = "time";
+    public static final String LABELS = "labels";
 
     public static boolean isTrue(HtmlBlock block) {
         String comment = block.getLiteral();

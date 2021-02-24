@@ -1,7 +1,7 @@
 <?
 title: compiler2
 author: 张三
-labels: 编译原理,词法分析器
+labels: 编译原理,词法分析器2
 time: 2021-2-8 15:06:40
 catalogue: compiler
 ?>

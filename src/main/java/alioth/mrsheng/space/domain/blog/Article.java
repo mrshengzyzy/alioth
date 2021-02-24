@@ -81,4 +81,16 @@ public class Article {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "Article{" + "title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", time='" + time + '\'' +
+                ", labels=" + labels +
+                ", catalogue='" + catalogue + '\'' +
+                ", html='" + html + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
