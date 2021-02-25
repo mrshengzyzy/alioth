@@ -1,12 +1,12 @@
 package alioth.mrsheng.space.service.blog;
 
 import alioth.mrsheng.space.domain.blog.Article;
-import alioth.mrsheng.space.domain.blog.ArticlePage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -19,30 +19,32 @@ public class BlogBusinessImpl extends AbstractBlogSupport implements IBlogBusine
     private IBlogService blogService;
 
     @Override
-    public ArticlePage pages(String catalogue) throws Exception {
-
-        // 文章列表
+    public List<Article> pages(String catalogue) throws Exception {
         String locationPattern = catalogueToLocationPattern(catalogue);
-        List<Article> articleList = blogService.articleList(locationPattern);
-
-        // 标签统计
-        Map<String, Integer> map = countAllLabels();
-        return new ArticlePage(articleList, null, map);
+        return blogService.articleList(locationPattern);
     }
 
     @Override
-    public ArticlePage detail(String catalogue, String title) throws Exception {
-
-        // 请求文章详情
-        String locationPattern = BLOG_DIR + "/" + catalogue + "/" + title + ".md";
-        Article article = blogService.articleDetail(locationPattern);
-
-        // 标签统计
-        Map<String, Integer> map = countAllLabels();
-        return new ArticlePage(null, article, map);
+    public List<Article> labelPages(String label) throws Exception {
+        List<Article> response = new ArrayList<>();
+        String locationPattern = catalogueToLocationPattern(ALL_CATALOGUE);
+        List<Article> articleList = blogService.articleList(locationPattern);
+        articleList.forEach(article -> {
+            if (article.getLabels().contains(label)) {
+                response.add(article);
+            }
+        });
+        return response;
     }
 
-    private Map<String, Integer> countAllLabels() throws Exception {
+    @Override
+    public Article detail(String catalogue, String title) throws Exception {
+        String locationPattern = BLOG_DIR + "/" + catalogue + "/" + title + ".md";
+        return blogService.articleDetail(locationPattern);
+    }
+
+    @Override
+    public Map<String, Integer> labels() throws Exception {
         String locationPattern = catalogueToLocationPattern(ALL_CATALOGUE);
         List<Article> articleList = blogService.articleList(locationPattern);
         return countArticleLabels(articleList);

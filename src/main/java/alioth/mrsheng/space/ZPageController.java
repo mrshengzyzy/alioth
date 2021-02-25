@@ -1,6 +1,6 @@
 package alioth.mrsheng.space;
 
-import alioth.mrsheng.space.domain.blog.ArticlePage;
+import alioth.mrsheng.space.domain.blog.Article;
 import alioth.mrsheng.space.service.blog.IBlogBusiness;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ZPageController {
@@ -24,16 +26,28 @@ public class ZPageController {
 
     @RequestMapping(value = {"/post/{catalogue}"})
     public String post(Model model, @PathVariable String catalogue) throws Exception {
-        ArticlePage articlePage = blogBusiness.pages(catalogue);
-        model.addAttribute("articles",articlePage.getArticles());
-        model.addAttribute("labels",articlePage.getLabels());
+        List<Article> articles = blogBusiness.pages(catalogue);
+        Map<String, Integer> labels = blogBusiness.labels();
+        model.addAttribute("articles", articles);
+        model.addAttribute("labels", labels);
+        return "index";
+    }
+
+    @RequestMapping(value = {"/post/label/{label}"})
+    public String labelPost(Model model, @PathVariable String label) throws Exception {
+        List<Article> articles = blogBusiness.labelPages(label);
+        Map<String, Integer> labels = blogBusiness.labels();
+        model.addAttribute("articles", articles);
+        model.addAttribute("labels", labels);
         return "index";
     }
 
     @RequestMapping(value = {"/blog/{catalogue}/{title}"})
     public String blog(Model model, @PathVariable String catalogue, @PathVariable String title) throws Exception {
-        ArticlePage articlePage = blogBusiness.detail(catalogue, title);
-        model.addAttribute(articlePage);
+        Article article = blogBusiness.detail(catalogue, title);
+        Map<String, Integer> labels = blogBusiness.labels();
+        model.addAttribute("article", article);
+        model.addAttribute("labels", labels);
         return "blog";
     }
 

@@ -19,11 +19,14 @@
             标签
         </div>
         <hr>
-        <table>
-            <tr th:each="map : ${labels}">
-                <td th:text="${map.key} + | --- | + ${map.value}"></td>
-            </tr>
-        </table>
+        <small>
+            <ul class="list-unstyled">
+                <li class="mb-2" th:each="map : ${labels}">
+                    <a th:href="@{'/post/label/'+${map.key}}" th:text="${map.key}"></a>
+                    <span class="badge badge-secondary" th:text="${map.value}"></span>
+                </li>
+            </ul>
+        </small>
     </div>
 </div>
 
