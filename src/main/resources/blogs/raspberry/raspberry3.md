@@ -1,9 +1,9 @@
 <?
-title: compiler2
-author: 张三
-labels: 编译原理,词法分析器2
-time: 2021-02-09 15:06:40
-brief: 简述内容请不要换行compiler2
+title: raspberry3
+author: 王五
+labels: 树莓派,树莓派标签
+time: 2021-04-10 15:06:40
+brief: 简述内容请不要换行raspberry3
 ?>
 
 # 一级标题

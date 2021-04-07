@@ -2,8 +2,8 @@
 title: compiler1
 author: 张三
 labels: 编译原理,词法分析器
-time: 2021-2-8 15:06:40
-catalogue: compiler
+time: 2021-02-08 15:06:40
+brief: 简述内容请不要换行compiler1
 ?>
 
 # 一级标题

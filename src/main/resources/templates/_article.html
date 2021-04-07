@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="zh">
+
+<div th:fragment="list">
+    <ul class="article-list">
+        <li class="media mb-3" th:each="article : ${context.getArticleList()}">
+            <div class="media-body">
+                <h1 class="mb-1">
+                    <a class="text-dark"
+                       th:href="@{'/blog/detail/'+${article.getCatalogue()}+'/'+${article.getTitle()}}"
+                       th:text="${article.getTitle()}"></a>
+                </h1>
+                <small>
+                    <a class="text-secondary" href="#"
+                       th:text="${article.getDateTimeString()}"></a>
+                </small>
+                <p th:text="${article.getBrief()}"></p>
+            </div>
+        </li>
+    </ul>
+    <nav id="page-plugin"></nav>
+</div>
+
+<div th:fragment="detail">
+    <div class="article">
+        <h1 th:text="${context.article.title}"></h1>
+        <p>
+            <small>作者：</small>
+            <a class="btn btn-white" th:text="${context.article.author}"></a>
+        </p>
+        <div class="d-flex">
+            <p>
+                发布于 <small th:text="${context.article.dateTimeString}"></small>
+                最后更新于 <small th:text="${context.article.dateTimeString}"></small>
+            </p>
+            <div class="ml-auto">
+                <a href="#" class="btn btn-sm btn-light" target="_blank">
+                    <span class="iconfont icon-github"></span> 修改原文
+                </a>
+            </div>
+        </div>
+        <hr>
+        <div class="markdown-body">[(${context.article.html})]</div>
+    </div>
+</div>
+
+</html>

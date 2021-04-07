@@ -1,5 +1,6 @@
 package alioth.mrsheng.space.domain.blog;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Article {
@@ -11,8 +12,12 @@ public class Article {
     private String author;
 
     // 发布时间
-    // YYYY-MM-DD HH:mm:ss 格式
-    private String time;
+    // yyyy-MM-dd HH:mm:ss
+    private LocalDateTime dateTime;
+
+    // 页面展示使用
+    // 当前实际只展示了日期
+    private String dateTimeString;
 
     // 标签
     private List<String> labels;
@@ -24,7 +29,7 @@ public class Article {
     private String html;
 
     // 简述
-    private String description;
+    private String brief;
 
     public String getTitle() {
         return title;
@@ -42,12 +47,12 @@ public class Article {
         this.author = author;
     }
 
-    public String getTime() {
-        return time;
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 
     public List<String> getLabels() {
@@ -74,23 +79,30 @@ public class Article {
         this.html = html;
     }
 
-    public String getDescription() {
-        return description;
+    public String getBrief() {
+        return brief;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setBrief(String brief) {
+        this.brief = brief;
+    }
+
+    public String getDateTimeString() {
+        return dateTimeString;
+    }
+
+    public void setDateTimeString(String dateTimeString) {
+        this.dateTimeString = dateTimeString;
     }
 
     @Override
     public String toString() {
         return "Article{" + "title='" + title + '\'' +
                 ", author='" + author + '\'' +
-                ", time='" + time + '\'' +
+                ", dateTime=" + dateTime +
                 ", labels=" + labels +
                 ", catalogue='" + catalogue + '\'' +
-                ", html='" + html + '\'' +
-                ", description='" + description + '\'' +
+                ", brief='" + brief + '\'' +
                 '}';
     }
 }

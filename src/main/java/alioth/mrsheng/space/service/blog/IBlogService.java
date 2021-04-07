@@ -1,14 +1,19 @@
 package alioth.mrsheng.space.service.blog;
 
 import alioth.mrsheng.space.domain.blog.Article;
+import alioth.mrsheng.space.domain.blog.Link;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 public interface IBlogService {
 
-    List<Article> articleList(String dir) throws IOException;
+    /**
+     * 获取文章列表
+     */
+    List<Article> queryArticles() throws Exception;
 
-    Article articleDetail(String location) throws IOException;
+    /**
+     * 获取友链列表
+     */
+    List<Link> queryLinks() throws Exception;
 }

@@ -25,12 +25,11 @@ public class InformationBlockRender extends CoreHtmlNodeRenderer implements Node
 
         HtmlBlock htmlBlock = (HtmlBlock) node;
 
-        // 文章信息块不进行渲染
-        if (InformationBlock.isTrue(htmlBlock)) {
+        // 当前 Node 节点是文章节点时不进行渲染(转换为html)
+        if (InformationBlockConst.isInformationBlock(htmlBlock)) {
             return;
         }
 
-        // 其他块仍旧调用原始逻辑进行渲染
         node.accept(this);
     }
 }

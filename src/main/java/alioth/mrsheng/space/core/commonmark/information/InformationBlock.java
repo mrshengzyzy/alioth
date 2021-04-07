@@ -1,6 +1,5 @@
 package alioth.mrsheng.space.core.commonmark.information;
 
-import cn.hutool.core.util.StrUtil;
 import org.commonmark.node.HtmlBlock;
 
 import java.util.List;
@@ -8,31 +7,31 @@ import java.util.List;
 // 信息节点
 public class InformationBlock extends HtmlBlock {
 
-    private static final String StartLabel = "<?";
-    private static final String EndLabel = "?>";
-
-    public static final String AUTHOR = "author";
-    public static final String TITLE = "title";
-    public static final String CATALOGUE = "catalogue";
-    public static final String TIME = "time";
-    public static final String LABELS = "labels";
-
-    public static boolean isTrue(HtmlBlock block) {
-        String comment = block.getLiteral();
-        return StrUtil.startWith(comment, StartLabel) && StrUtil.endWith(comment, EndLabel);
-    }
-
+    // 标题,必须唯一
     private String title;
 
+    // 作者
     private String author;
 
+    // 发布时间
     private String time;
 
+    // 文章标签
     private List<String> labels;
 
-    private String catalogue;
+    // 简介
+    private String brief;
 
+    // markdown 转换为 html 内容
     private String html;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public String getAuthor() {
         return author;
@@ -50,20 +49,20 @@ public class InformationBlock extends HtmlBlock {
         this.time = time;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public List<String> getLabels() {
         return labels;
     }
 
     public void setLabels(List<String> labels) {
         this.labels = labels;
+    }
+
+    public String getBrief() {
+        return brief;
+    }
+
+    public void setBrief(String brief) {
+        this.brief = brief;
     }
 
     public String getHtml() {
@@ -74,21 +73,13 @@ public class InformationBlock extends HtmlBlock {
         this.html = html;
     }
 
-    public String getCatalogue() {
-        return catalogue;
-    }
-
-    public void setCatalogue(String catalogue) {
-        this.catalogue = catalogue;
-    }
-
     @Override
     public String toString() {
-        return "InformationBlock{" + "author='" + author + '\'' +
+        return "InformationBlock{" + "title='" + title + '\'' +
+                ", author='" + author + '\'' +
                 ", time='" + time + '\'' +
-                ", title='" + title + '\'' +
-                ", catalogue='" + catalogue + '\'' +
                 ", labels=" + labels +
-                ", html=<omit>}";
+                ", brief='" + brief + '\'' +
+                '}';
     }
 }

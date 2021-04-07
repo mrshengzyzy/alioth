@@ -38,7 +38,11 @@ public class CommonMarkUtils {
                 .build();
     }
 
-    public static InformationBlock markdown2Html(String content) {
+    /**
+     * 将 MD 文件转换为 InformationBlock
+     * 转换失败将报错
+     */
+    public static InformationBlock markdown2InformationBlock(String content) {
 
         // 为节点添加自定义的 Visitor
         InformationBlockVisitor visitor = InformationBlockVisitor.build();
@@ -47,9 +51,19 @@ public class CommonMarkUtils {
 
         // 返回渲染对象
         String html = defaultRender().render(document);
+
+        // 解析为节点对象
         InformationBlock block = visitor.getInformationBlock();
         block.setHtml(html);
 
         return block;
+    }
+
+    /**
+     * 将 MD 转换为 html
+     */
+    public static String markdown2Html(String content) {
+        Node document = defaultParser().parse(content);
+        return defaultRender().render(document);
     }
 }

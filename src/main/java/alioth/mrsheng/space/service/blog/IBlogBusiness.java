@@ -1,17 +1,15 @@
 package alioth.mrsheng.space.service.blog;
 
-import alioth.mrsheng.space.domain.blog.Article;
-
-import java.util.List;
-import java.util.Map;
+import alioth.mrsheng.space.domain.blog.ArticlePage;
 
 public interface IBlogBusiness {
 
-    List<Article> pages(String catalogue) throws Exception;
+    // 按目录查询
+    ArticlePage pageByCatalogue(String catalogue, int pageNo, int pageSize) throws Exception;
 
-    List<Article> labelPages(String label) throws Exception;
+    // 按标签查询
+    ArticlePage pageByLabel(String label, int pageNo, int pageSize) throws Exception;
 
-    Article detail(String catalogue, String title) throws Exception;
-
-    Map<String, Integer> labels() throws Exception;
+    // 文章详情
+    ArticlePage detail(String catalogue, String title) throws Exception;
 }

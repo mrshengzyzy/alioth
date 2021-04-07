@@ -2,8 +2,8 @@
 title: golang2
 author: 李四
 labels: Golang
-time: 2021-2-8 15:06:40
-catalogue: golang
+time: 2021-01-09 15:06:40
+brief: 简述内容请不要换行golang2
 ?>
 
 # 一级标题
