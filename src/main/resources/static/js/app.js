@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 全局变量
  */
 const DefaultPageSize = 7;
